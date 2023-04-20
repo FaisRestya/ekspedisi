@@ -41,8 +41,10 @@ Route::get('/delMessage/{id}', [MainController::class, 'destroy']);
 // form pemesanan
 Route::get('/tbh-pesanan', [OrderController::class, 'create']);
 Route::post('/tbh-pesanan', [OrderController::class, 'store']);
+
 Route::get('/tbh-pesanan-elf', [OrderControllerElf::class, 'create']);
 Route::post('/tbh-pesanan-elf', [OrderControllerElf::class, 'store']);
+
 Route::get('/tbh-private-tour', [OrderControllerPrivateTour::class, 'create']);
 Route::post('/tbh-private-tour', [OrderControllerPrivateTour::class, 'store']);
 
@@ -60,6 +62,9 @@ Route::middleware(['user'])->group(function () {
     Route::post('/tbh-service', [ServiceController::class, 'store']);
 
     Route::get('/dft-pesanan', [OrderController::class, 'index']);
+    Route::get('/dft-pesanan/delete/{id}', [OrderController::class, 'destroy']);
+    Route::get('/dft-pesanan/edit/{id}', [OrderController::class, 'edit']);
+    Route::post('/edt-pesanan/{id}', [OrderController::class, 'update']);
 
     Route::get('/dft-pesanan-elf', [OrderControllerElf::class, 'index']);
 

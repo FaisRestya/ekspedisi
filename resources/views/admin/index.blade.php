@@ -11,7 +11,7 @@
                 <div class="card bg-primary text-white mb-4">
                     <div class="card-body">Sewa Bus atau Elf</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" href="{{ url('/dft-pesanan') }}">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="card bg-warning text-white mb-4">
                     <div class="card-body">Paket Wisata</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" href="{{ url('/dft-pesanan-elf') }}">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="card bg-success text-white mb-4">
                     <div class="card-body">Ziarah Wali</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" href="{{ url('/dft-ziarah-wali') }}">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                 <div class="card bg-danger text-white mb-4">
                     <div class="card-body">Private atau Studi Tour</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" href="{{ url('/dft-private-tour') }}">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>

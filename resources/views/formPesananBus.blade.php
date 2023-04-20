@@ -60,6 +60,10 @@
                                 </select>
                             </div>
                             <div class="mt-3 form-group">
+                                <label class="mb-2" for="harga">Harga</label>
+                                <input type="number" name="harga" class="form-control" id="harga" readonly required>
+                            </div>
+                            <div class="mt-3 form-group">
                                 <label class="mb-2" for="tujuan">Tujuan</label>
                                 <input type="text" name="tujuan" class="form-control" id="tujuan" required>
                             </div>
@@ -93,4 +97,20 @@
         </section><!-- End Contact Section -->
 
     </main><!-- End #main -->
+
+    {{-- tampilkan harga bus --}}
+    <script>
+        $('#tipe').change(function() {
+            var type = $(this).val();
+            var harga = 0;
+            if (type != '') {
+               harga = 0
+            } if (type == "Medium") {
+                harga = 150000
+            } if (type == "Big") {
+                harga = 300000
+            }
+            $("#harga").val(harga)
+        });
+    </script>
 @endsection
