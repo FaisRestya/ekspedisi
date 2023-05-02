@@ -95,7 +95,8 @@ class OrderControllerElf extends Controller
      */
     public function edit($id)
     {
-        //
+        $pesananElf = OrderElf::find($id);
+        return view('admin.edtSewaElf', compact('pesananElf'));
     }
 
     /**
@@ -107,7 +108,37 @@ class OrderControllerElf extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'startDate' => 'required',
+            'endDate' => 'required',
+            'category' => 'required',
+            'tipe' => 'required',
+            'harga' => 'required',
+            'tujuan' => 'required',
+            'jmlOrang' => 'required',
+            'konsumen' => 'required',
+            'phoneNumber' => 'required',
+            'alamat' => 'required',
+            'fotoKtp' => 'mimes:jpg,jpeg,png'
+        ];
+
+        $validate = $request->validate($rules);
+
+        if ($request->file('fotoKtp')) {
+            $file = $request->file('fotoKtp');
+
+            $nama_file = time() . '_' . $file->getClientOriginalName();
+
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'data_pesanan';
+            $file->move($tujuan_upload, $nama_file);
+
+            $validate['fotoKtp'] = $nama_file;
+        }
+
+        if (OrderElf::where('id', $id)->update($validate)) {
+            return redirect('/dft-pesanan-elf');
+        }
     }
 
     /**
@@ -118,6 +149,10 @@ class OrderControllerElf extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pesananElf = OrderElf::find($id);
+        if ($pesananElf) {
+            OrderElf::where('id', $id)->delete();
+        }
+        return back();
     }
 }

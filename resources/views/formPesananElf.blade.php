@@ -55,8 +55,9 @@
                                 <label class="mb-2" for="tipe">Tipe</label>
                                 <select class="form-control" name="tipe" id="tipe">
                                     <option value="">== Pilih Tipe ==</option>
-                                    <option value="Medium">Short ( 16 seat) </option>
-                                    <option value="Big">Long ( 19 seat)</option>
+                                    <option value="Medium">Short Mercedes Benz ( 16 seat) </option>
+                                    <option value="Big">Long Mercedez Benz ( 19 seat)</option>
+                                    <option value="Long">Long BMW ( 20 seat)</option>
                                 </select>
                             </div>
                             <div class="mt-3 form-group">
@@ -109,6 +110,9 @@
                 harga = 150000
             } if (type == "Big") {
                 harga = 300000
+            }
+            if (type == "Long") {
+                harga = 500000
             }
             $("#harga").val(harga)
         });

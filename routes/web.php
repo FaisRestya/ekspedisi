@@ -67,6 +67,9 @@ Route::middleware(['user'])->group(function () {
     Route::post('/edt-pesanan/{id}', [OrderController::class, 'update']);
 
     Route::get('/dft-pesanan-elf', [OrderControllerElf::class, 'index']);
+    Route::get('/dft-pesanan-elf/delete/{id}', [OrderControllerElf::class, 'destroy']);
+    Route::get('/dft-pesanan-elf/edit/{id}', [OrderControllerElf::class, 'edit']);
+    Route::post('/edt-pesanan-elf/{id}', [OrderControllerElf::class, 'update']);
 
     Route::get('/dft-private-tour', [OrderControllerPrivateTour::class, 'index']);
     Route::get('/dft-studi-tour', [OrderControllerStudiTour::class, 'index']);

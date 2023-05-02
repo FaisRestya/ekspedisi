@@ -23,6 +23,7 @@
                             <th>Nama Pemesan</th>
                             <th>Nomor Telefon</th>
                             <th>Alamat</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -35,6 +36,7 @@
                             <th>Nama Pemesan</th>
                             <th>Nomor Telefon</th>
                             <th>Alamat</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -48,6 +50,12 @@
                                 <td>{{ $item->konsumen }}</td>
                                 <td>{{ $item->phoneNumber }}</td>
                                 <td>{{ $item->alamat }}</td>
+                                <td>
+                                    <a href="/dft-pesanan-elf/delete/{{ $item->id }}" class="btn btn-danger btn-sm ">
+                                        Hapus
+                                    </a>
+                                    <a href="/dft-pesanan-elf/edit/{{ $item->id }}" class="btn btn-success btn-sm">Edit</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
