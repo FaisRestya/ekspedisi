@@ -41,6 +41,7 @@ class OrderControllerPrivateTour extends Controller
             'endDate' => 'required',
             'category' => 'required',
             'tipe' => 'required',
+            'harga' => 'required',
             'tujuan' => 'required',
             'jmlOrang' => 'required',
             'konsumen' => 'required',
@@ -63,6 +64,7 @@ class OrderControllerPrivateTour extends Controller
             'endDate' => $request->endDate,
             'category' => $request->category,
             'tipe' => $request->tipe,
+            'harga' => $request->harga,
             'tujuan' => $request->tujuan,
             'jmlOrang' => $request->jmlOrang,
             'konsumen' => $request->konsumen,
@@ -93,7 +95,8 @@ class OrderControllerPrivateTour extends Controller
      */
     public function edit($id)
     {
-        //
+        $dftPrivateTour = OrderPrivateTour::find($id);
+        return view('admin.edtPrivateTour', compact('dftPrivateTour'));
     }
 
     /**
@@ -105,7 +108,37 @@ class OrderControllerPrivateTour extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'startDate' => 'required',
+            'endDate' => 'required',
+            'category' => 'required',
+            'tipe' => 'required',
+            'harga' => 'required',
+            'tujuan' => 'required',
+            'jmlOrang' => 'required',
+            'konsumen' => 'required',
+            'phoneNumber' => 'required',
+            'alamat' => 'required',
+            'fotoKtp' => 'mimes:jpg,jpeg,png'
+        ];
+
+        $validate = $request->validate($rules);
+
+        if ($request->file('fotoKtp')) {
+            $file = $request->file('fotoKtp');
+
+            $nama_file = time() . '_' . $file->getClientOriginalName();
+
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'data_pesanan';
+            $file->move($tujuan_upload, $nama_file);
+
+            $validate['fotoKtp'] = $nama_file;
+        }
+
+        if (OrderPrivateTour::where('id', $id)->update($validate)) {
+            return redirect('/dft-private-tour');
+        }
     }
 
     /**
@@ -116,6 +149,10 @@ class OrderControllerPrivateTour extends Controller
      */
     public function destroy($id)
     {
-        //
+        $privateTour = OrderPrivateTour::find($id);
+        if ($privateTour) {
+            OrderPrivateTour::where('id', $id)->delete();
+        }
+        return back();
     }
 }

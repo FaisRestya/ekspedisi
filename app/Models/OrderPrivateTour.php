@@ -9,5 +9,5 @@ class OrderPrivateTour extends Model
 {
     use HasFactory;
     protected $table = "order_private_tour";
-    protected $fillable = ['startDate', 'endDate', 'category', 'tipe', 'tujuan', 'jmlOrang', 'konsumen', 'phoneNumber', 'alamat', 'fotoKtp'];
+    protected $fillable = ['startDate', 'endDate', 'category', 'tipe', 'tujuan', 'jmlOrang', 'konsumen', 'phoneNumber', 'alamat', 'fotoKtp', 'harga' ];
 }
