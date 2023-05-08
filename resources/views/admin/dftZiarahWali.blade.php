@@ -23,6 +23,7 @@
                             <th>Nama Instansi</th>
                             <th>Nomor Telefon</th>
                             <th>Alamat Instansi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -34,7 +35,8 @@
                             <th>Jumlah Penumpang</th>
                             <th>Nama Instansi</th>
                             <th>Nomor Telefon</th>
-                            <th>Alamat Instansi</th>
+                            <th>Alamat Instansi</th>                            <th>Aksi</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -48,6 +50,12 @@
                                 <td>{{ $item->konsumen }}</td>
                                 <td>{{ $item->phoneNumber }}</td>
                                 <td>{{ $item->alamat }}</td>
+                                <td>
+                                    <a href="/dft-ziarah-wali/delete/{{ $item->id }}" class="btn btn-danger btn-sm ">
+                                        Hapus
+                                    </a>
+                                    <a href="/dft-ziarah-wali/edit/{{ $item->id }}" class="btn btn-success btn-sm">Edit</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

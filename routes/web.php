@@ -83,6 +83,9 @@ Route::middleware(['user'])->group(function () {
     Route::post('/edt-studi-tour/{id}', [OrderControllerStudiTour::class, 'update']);
 
     Route::get('/dft-ziarah-wali', [OrderControllerZiarahWali::class, 'index']);
+    Route::get('/dft-ziarah-wali/delete/{id}', [OrderControllerZiarahWali::class, 'destroy']);
+    Route::get('/dft-ziarah-wali/edit/{id}', [OrderControllerZiarahWali::class, 'edit']);
+    Route::post('/edt-ziarah-wali/{id}', [OrderControllerZiarahWali::class, 'update']);
 
     Route::post('/logout', [AuthenticationController::class, 'logout']);
 });

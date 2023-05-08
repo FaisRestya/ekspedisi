@@ -42,6 +42,7 @@ class OrderControllerZiarahWali extends Controller
             'endDate' => 'required',
             'category' => 'required',
             'tipe' => 'required',
+            'harga' => 'required',
             'tujuan' => 'required',
             'jmlOrang' => 'required',
             'konsumen' => 'required',
@@ -64,6 +65,7 @@ class OrderControllerZiarahWali extends Controller
             'endDate' => $request->endDate,
             'category' => $request->category,
             'tipe' => $request->tipe,
+            'harga' => $request->harga,
             'tujuan' => $request->tujuan,
             'jmlOrang' => $request->jmlOrang,
             'konsumen' => $request->konsumen,
@@ -94,7 +96,8 @@ class OrderControllerZiarahWali extends Controller
      */
     public function edit($id)
     {
-        //
+        $dftZiarahWali = OrderZiarahWali::find($id);
+        return view('admin.edtZiarahWali', compact('dftZiarahWali'));
     }
 
     /**
@@ -106,7 +109,37 @@ class OrderControllerZiarahWali extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'startDate' => 'required',
+            'endDate' => 'required',
+            'category' => 'required',
+            'tipe' => 'required',
+            'harga' => 'required',
+            'tujuan' => 'required',
+            'jmlOrang' => 'required',
+            'konsumen' => 'required',
+            'phoneNumber' => 'required',
+            'alamat' => 'required',
+            'fotoKtp' => 'mimes:jpg,jpeg,png'
+        ];
+
+        $validate = $request->validate($rules);
+
+        if ($request->file('fotoKtp')) {
+            $file = $request->file('fotoKtp');
+
+            $nama_file = time() . '_' . $file->getClientOriginalName();
+
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'data_pesanan';
+            $file->move($tujuan_upload, $nama_file);
+
+            $validate['fotoKtp'] = $nama_file;
+        }
+
+        if (OrderZiarahWali::where('id', $id)->update($validate)) {
+            return redirect('/dft-ziarah-wali');
+        }
     }
 
     /**
@@ -117,6 +150,10 @@ class OrderControllerZiarahWali extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ziarahWali = OrderZiarahWali::find($id);
+        if ($ziarahWali) {
+            OrderZiarahWali::where('id', $id)->delete();
+        }
+        return back();
     }
 }

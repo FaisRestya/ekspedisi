@@ -9,5 +9,5 @@ class OrderZiarahWali extends Model
 {
     use HasFactory;
     protected $table = "order_ziarah_wali";
-    protected $fillable = ['startDate', 'endDate', 'category', 'tipe', 'tujuan', 'jmlOrang', 'konsumen', 'phoneNumber', 'alamat', 'fotoKtp'];
+    protected $fillable = ['startDate', 'endDate', 'category', 'tipe', 'tujuan', 'jmlOrang', 'konsumen', 'phoneNumber', 'alamat', 'fotoKtp', 'harga'];
 }
