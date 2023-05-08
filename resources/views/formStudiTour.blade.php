@@ -55,11 +55,16 @@
                                 <label class="mb-2" for="tipe">Tipe</label>
                                 <select class="form-control" name="tipe" id="tipe">
                                     <option value="">== Pilih Tipe ==</option>
-                                    <option value="Medium">Short Elf ( 16 seat) </option>
-                                    <option value="Big">Long Elf ( 19 seat)</option>
-                                    <option value="Medium">Medium Bus ( 30 - 35 seat)</option>
-                                    <option value="Big">Big Bus ( 45 - 59 seat)</option>
+                                    <option value="ShortElf">Short Elf ( 16 seat) </option>
+                                    <option value="LongElf">Long Elf ( 19 seat)</option>
+                                    <option value="MediumBus">Medium Bus ( 30 - 35 seat)</option>
+                                    <option value="BigBus">Big Bus ( 45 - 59 seat)</option>
+                                    <option value="LongBmw">Long BMW ( 20 seat)</option>
                                 </select>
+                            </div>
+                            <div class="mt-3 form-group">
+                                <label class="mb-2" for="harga">Harga</label>
+                                <input type="number" name="harga" class="form-control" id="harga" readonly required>
                             </div>
                             <div class="mt-3 form-group">
                                 <label class="mb-2" for="tujuan">Tujuan</label>
@@ -95,4 +100,29 @@
         </section><!-- End Contact Section -->
 
     </main><!-- End #main -->
+
+    {{-- munculkan harga --}}
+    <script>
+            $('#tipe').change(function() {
+                var type = $(this).val();
+                var harga = 0;
+                if (type != '') {
+                   harga = 0
+                } if (type == "ShortElf") {
+                    harga = 150000
+                } if (type == "LongElf") {
+                    harga = 300000
+                }
+                if (type == "MediumBus") {
+                    harga = 500000
+                }
+                if (type == "BigBus") {
+                    harga = 700000
+                }
+                if (type == "LongBmw") {
+                    harga = 400000
+                }
+                $("#harga").val(harga)
+            });
+    </script>
 @endsection

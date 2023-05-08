@@ -78,7 +78,11 @@ Route::middleware(['user'])->group(function () {
 
 
     Route::get('/dft-studi-tour', [OrderControllerStudiTour::class, 'index']);
+    Route::get('/dft-studi-tour/delete/{id}', [OrderControllerStudiTour::class, 'destroy']);
+    Route::get('/dft-studi-tour/edit/{id}', [OrderControllerStudiTour::class, 'edit']);
+    Route::post('/edt-studi-tour/{id}', [OrderControllerStudiTour::class, 'update']);
 
     Route::get('/dft-ziarah-wali', [OrderControllerZiarahWali::class, 'index']);
+
     Route::post('/logout', [AuthenticationController::class, 'logout']);
 });

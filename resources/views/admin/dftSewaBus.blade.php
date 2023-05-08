@@ -16,8 +16,8 @@
                     <thead>
                         <tr>
                             <th>Dari & Sampai Tanggal</th>
-                            <th>Kategori</th>
                             <th>Tipe</th>
+                            <th>Harga</th>
                             <th>Tujuan</th>
                             <th>Jumlah Penumpang</th>
                             <th>Nama Pemesan</th>
@@ -29,8 +29,8 @@
                     <tfoot>
                         <tr>
                             <th>Dari & Sampai Tanggal</th>
-                            <th>Kategori</th>
                             <th>Tipe</th>
+                            <th>Harga</th>
                             <th>Tujuan</th>
                             <th>Jumlah Penumpang</th>
                             <th>Nama Pemesan</th>
@@ -43,8 +43,8 @@
                         @foreach ($dftPesanan as $item)
                             <tr>
                                 <td>{{ $item->startDate }} {{ $item->endDate}}</td>
-                                <td>{{ $item->category }}</td>
                                 <td>{{ $item->tipe }}</td>
+                                <td>{{ $item->harga }}</td>
                                 <td>{{ $item->tujuan }}</td>
                                 <td>{{ $item->jmlOrang }}</td>
                                 <td>{{ $item->konsumen }}</td>
